@@ -21,19 +21,15 @@
  *
  */
 
-#ifndef GCONTACTCLIENTTEST_H
-#define GCONTACTCLIENTTEST_H
+#ifndef GOOGLEATOM_GLOBAL_H
+#define GOOGLEATOM_GLOBAL_H
 
-#include <QObject>
+#include <QtCore/qglobal.h>
 
-class GContactClientTest : public QObject
-{
-    Q_OBJECT
-public:
-    explicit GContactClientTest(QObject *parent = 0);
+#if defined(ATOM_LIBRARY)
+#  define ATOMSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define ATOMSHARED_EXPORT Q_DECL_IMPORT
+#endif
 
-private slots:
-
-};
-
-#endif // GCONTACTCLIENTTEST_H
+#endif // GOOGLEATOM_GLOBAL_H

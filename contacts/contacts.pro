@@ -5,9 +5,5 @@
 #-------------------------------------------------
 
 TEMPLATE = subdirs
-
 CONFIG += ordered
-
-SUBDIRS = src \
-          unittests
-
+SUBDIRS = src

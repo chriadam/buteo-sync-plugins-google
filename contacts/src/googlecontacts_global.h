@@ -4,7 +4,6 @@
  * Copyright (C) 2013 Jolla Ltd. and/or its subsidiary(-ies).
  *
  * Contributors: Sateesh Kavuri <sateesh.kavuri@gmail.com>
- *               Mani Chandrasekar <maninc@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -22,5 +21,15 @@
  *
  */
 
-#include "GContactCustomDetail.h"
+#ifndef GOOGLECONTACTSPLUGIN_GLOBAL_H
+#define GOOGLECONTACTSPLUGIN_GLOBAL_H
 
+#include <QtCore/qglobal.h>
+
+#if defined(BUTEOGCONTACTPLUGIN_LIBRARY)
+#  define BUTEOGCONTACTPLUGINSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define BUTEOGCONTACTPLUGINSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // GOOGLECONTACTSPLUGIN_GLOBAL_H

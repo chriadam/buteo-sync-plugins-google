@@ -28,7 +28,7 @@ BuildRequires: qtcontacts-sqlite-qt5
 %files
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/buteo/profiles/client/googlecontacts.xml
-%config %{_sysconfdir}/buteo/profiles/sync/googlecontacts.xml
+%config %{_sysconfdir}/buteo/profiles/sync/google.Contacts.xml
 %{_libdir}/buteo-plugins-qt5/*.so
 
 
@@ -48,8 +48,7 @@ Requires: %{name} = %{version}-%{release}
 
 
 %prep
-%setup -q
-
+%setup -q -n %{name}-%{version}
 
 %build
 %qmake5 -recursive

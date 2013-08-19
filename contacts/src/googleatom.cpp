@@ -5,6 +5,7 @@
  *
  * Contributors: Sateesh Kavuri <sateesh.kavuri@gmail.com>
  *               Mani Chandrasekar <maninc@gmail.com>
+ *               Chris Adams <chris.adams@jollamobile.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -22,183 +23,143 @@
  *
  */
 
-#include "GContactEntry.h"
-#include "GAtom.h"
+#include "googleatom.h"
 #include <LogMacros.h>
 
-GAtom::GAtom()
+GoogleAtom::GoogleAtom()
 {
-    FUNCTION_CALL_TRACE;
 }
 
-void
-GAtom::setAuthorEmail (QString authorEmail)
+void GoogleAtom::setAuthorEmail(const QString &authorEmail)
 {
-    FUNCTION_CALL_TRACE;
-
     mAuthorEmail = authorEmail;
 }
 
-QString
-GAtom::authorEmail()
+QString GoogleAtom::authorEmail() const
 {
     return mAuthorEmail;
 }
 
-void
-GAtom::setAuthorName (QString authorName)
+void GoogleAtom::setAuthorName(const QString &authorName)
 {
     mAuthorName = authorName;
 }
 
-QString
-GAtom::authorName()
+QString GoogleAtom::authorName() const
 {
     return mAuthorName;
 }
 
-void
-GAtom::setId(const QString id)
+void GoogleAtom::setId(const QString &id)
 {
     mId = id;
 }
 
-QString
-GAtom::id()
+QString GoogleAtom::id() const
 {
     return mId;
 }
 
-void
-GAtom::setUpdated(QString updated)
+void GoogleAtom::setUpdated(const QString &updated)
 {
     mUpdated = updated;
 }
 
-QString
-GAtom::updated()
+QString GoogleAtom::updated() const
 {
     return mUpdated;
 }
 
-void
-GAtom::setCategory (const QString schema, const QString term)
+void GoogleAtom::setCategory (const QString &schema, const QString &term)
 {
+    Q_UNUSED(schema)
+    Q_UNUSED(term)
 }
 
-void
-GAtom::setTitle(QString title)
+void GoogleAtom::setTitle(const QString &title)
 {
     mTitle = title;
 }
 
-QString
-GAtom::title()
+QString GoogleAtom::title() const
 {
     return mTitle;
 }
 
-void
-GAtom::setGenerator(QString name,
-                  QString version,
-                  QString uri)
+void GoogleAtom::setGenerator(const QString &name, const QString &version, const QString &uri)
 {
     mGeneratorName = name;
     mGeneratorVersion = version;
     mGeneratorUri = uri;
 }
 
-void
-GAtom::setContent (const QString note, const QString type)
+void GoogleAtom::setContent (const QString &note, const QString &type)
 {
+    Q_UNUSED(note)
+    Q_UNUSED(type)
 }
 
-QString
-GAtom::generatorName()
+QString GoogleAtom::generatorName() const
 {
     return mGeneratorName;
 }
 
-QString
-GAtom::generatorVersion()
+QString GoogleAtom::generatorVersion() const
 {
     return mGeneratorVersion;
 }
 
-QString
-GAtom::generatorUri()
+QString GoogleAtom::generatorUri() const
 {
     return mGeneratorUri;
 }
 
-void
-GAtom::setTotalResults(int totalResults)
+void GoogleAtom::setTotalResults(int totalResults)
 {
     mTotalResults = totalResults;
 }
 
-int
-GAtom::totalResults()
+int GoogleAtom::totalResults() const
 {
     return mTotalResults;
 }
 
-void
-GAtom::setStartIndex(int startIndex)
+void GoogleAtom::setStartIndex(int startIndex)
 {
     mStartIndex = startIndex;
 }
 
-int
-GAtom::startIndex()
+int GoogleAtom::startIndex() const
 {
     return mStartIndex;
 }
 
-void
-GAtom::setItemsPerPage(int itemsPerPage)
+void GoogleAtom::setItemsPerPage(int itemsPerPage)
 {
     mItemsPerPage = itemsPerPage;
 }
 
-int
-GAtom::itemsPerPage()
+int GoogleAtom::itemsPerPage() const
 {
     return mItemsPerPage;
 }
 
-void
-GAtom::addEntry (GContactEntry *entry)
+void GoogleAtom::addEntryContact(const QContact &entryContact)
 {
-    mContactList.append (entry);
+    mContactList.append(entryContact);
 }
 
-QList<GContactEntry*>
-GAtom::entries()
+QList<QContact> GoogleAtom::entryContacts() const
 {
     return mContactList;
 }
 
-void
-GAtom::setNextEntriesUrl (const QString nextUrl)
+void GoogleAtom::setNextEntriesUrl(const QString &nextUrl)
 {
     mNextEntriesUrl = nextUrl;
 }
 
-const QString
-GAtom::nextEntriesUrl ()
+QString GoogleAtom::nextEntriesUrl() const
 {
     return mNextEntriesUrl;
-}
-
-const QList<GContactEntry*>
-GAtom::responseErrorEntries ()
-{
-    QList<GContactEntry*> errorEntries;
-    foreach (GContactEntry* entry, mContactList)
-    {
-        if (entry->error () == true)
-            errorEntries.append (entry);
-    }
-    return errorEntries;
 }
